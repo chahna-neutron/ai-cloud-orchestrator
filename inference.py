@@ -10,7 +10,7 @@ client = OpenAI(
 env = CloudEnv()
 state = env.reset()
 
-# ✅ FIXED
+try:
 response = client.chat.completions.create(
     model=os.environ["MODEL_NAME"],
     messages=[
@@ -19,6 +19,8 @@ response = client.chat.completions.create(
 )
 
 dummy = response.choices[0].message.content
+except Exception as e:
+    dummy = "fallback_action"
 
 print("[START] task=easy", flush=True)
 
