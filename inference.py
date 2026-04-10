@@ -4,18 +4,23 @@ env = CloudEnv()
 
 state = env.reset()
 
-for i in range(10):
-    # simple logic (baseline agent)
-    if state["cpu_usage"] > 80:
-        action = "scale_up"
-    elif state["cpu_usage"] < 40:
-        action = "scale_down"
-    else:
-        action = "do_nothing"
+print("[START] task=easy", flush=True)
 
-    state, reward, done, _ = env.step(action)
+total_reward = 0
+steps = 0
 
-    print(f"Step {i}:")
-    print("State:", state)
-    print("Reward:", reward)
-    print("-" * 30)
+for i in range(3):
+    action = 0  # simple action
+    state, reward, done, info = env.step(action)
+    
+    steps += 1
+    total_reward += reward
+    
+    print(f"[STEP] step={steps} reward={reward}", flush=True)
+    
+    if done:
+        break
+
+score = total_reward / steps if steps > 0 else 0
+
+print(f"[END] task=easy score={score} steps={steps}", flush=True)
