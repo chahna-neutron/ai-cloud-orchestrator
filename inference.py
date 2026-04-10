@@ -12,7 +12,7 @@ state = env.reset()
 
 # ✅ FIXED
 response = client.chat.completions.create(
-    model=os.environ.get("MODEL_NAME", "gpt-3.5-turbo"),
+    model=os.environ["MODEL_NAME"],
     messages=[
         {"role": "user", "content": "Give any random action"}
     ]
