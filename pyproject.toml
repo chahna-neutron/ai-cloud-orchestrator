@@ -5,7 +5,7 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "pydantic",
-    "openenv>=0.2.0"
+    "openenv"
 ]
 
 [project.scripts]
