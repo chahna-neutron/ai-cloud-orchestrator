@@ -26,7 +26,7 @@ total_reward = 0
 steps = 0
 
 for i in range(3):
-    action = 0
+    action = len(dummy)%2
     state, reward, done, info = env.step(action)
     
     steps += 1
